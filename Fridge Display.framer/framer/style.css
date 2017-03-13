@@ -8,10 +8,9 @@
 
 body {
 	background-color: #fff;
-	font: 28px/1em "HanziPen TC";
+	font: 28px/1em "Helvetica";
 	color: gray;
 	overflow: hidden;
-	text-align: center;
 }
 
 a {

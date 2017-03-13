@@ -73,15 +73,18 @@ forecast_scroll = new ScrollComponent
 forecast_scroll.contentInset = 
 	bottom: gap
 
+textStyle = { "padding-left":"30px", "font-size":"50px"}
+
 forecast_label = new Layer
 	html: "Shopping forecast"
 	fontFamily: "HanziPen TC"
-	fontSize: 30 # this no work. not know why. (ノಠ益ಠ)ノ彡┻━┻
 	color: 'white'
 	parent: forecast_scroll.content
 	backgroundColor: "rgba(0,0,0,0)"
 	width: forecast_box.width
 	y: 60
+
+forecast_label.style = textStyle
 
 # Loop to create row layers
 for index in [0...rows]
