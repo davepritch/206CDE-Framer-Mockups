@@ -73,7 +73,7 @@ forecast_scroll = new ScrollComponent
 forecast_scroll.contentInset = 
 	bottom: gap
 
-textStyle = { "padding-left":"30px", "font-size":"50px"}
+textStyle = { "text-align":"center", "font-size":"53px"}
 
 forecast_label = new Layer
 	html: "Shopping forecast"
@@ -82,6 +82,7 @@ forecast_label = new Layer
 	parent: forecast_scroll.content
 	backgroundColor: "rgba(0,0,0,0)"
 	width: forecast_box.width
+	opacity: 0.75
 	y: 60
 
 forecast_label.style = textStyle
