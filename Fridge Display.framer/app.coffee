@@ -49,18 +49,11 @@ forecast_box = new Layer
 	width: 949
 	height: 1150
 
-cancel = new Layer
-	image: "images/cancel.png"
-	x: calendar.width + (gap * 2)
-	y: clock.height + weather.height + forecast_box.height + (gap * 4)
-	width: 249
-	height: 91
-
 confirm = new Layer
 	image: "images/confirm.png"
-	x: calendar.width + cancel.width + (gap * 3)
+	x: calendar.width  + (gap * 1) + (gap * 1)
 	y: clock.height + weather.height + forecast_box.height + (gap * 4)
-	width: 650
+	width: forecast_box.width
 	height: 91
 
 forecast_scroll = new ScrollComponent
