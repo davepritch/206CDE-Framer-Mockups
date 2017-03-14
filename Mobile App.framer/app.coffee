@@ -8,8 +8,9 @@ gap = 50
 # Shopping forecast variables
 rows = 8
 gutter = 30
-rowWidth = 849
-rowHeight = 240
+rowWidth = 566
+rowHeight = 201
+item_list = ["images/items/item_1.png","images/items/item_2.png","images/items/item_3.png","images/items/item_4.png","images/items/item_5.png","images/items/item_6.png","images/items/item_7.png","images/items/item_8.png"]
 
 # status bar
 status_bar = new Layer
@@ -27,15 +28,18 @@ tab_bar = new Layer
 	x: Align.center
 	y: Screen.height - 98
 
-# Create ScrollComponent
-scroll = new ScrollComponent
+# Create Scroll Box
+forecast_scroll = new ScrollComponent
 	width: 650
 	height: 1005
 	x: Align.center
 	y: status_bar.height + gap + 10
 	image: "images/container.png"
 	scrollHorizontal: false
-	borderRadius: 10
+	borderRadius: 40
+forecast_scroll.contentInset = 
+	top: gap
+	bottom: gap
 
 # Create confirm button
 confirm = new Layer
@@ -66,16 +70,27 @@ scroll.contentInset =
 	bottom: 20
 
 # Add layers
-for i in [0...6]
-	layer = new Layer
-		parent: scroll.content
-		name: "Row #{i}"
-		width: 260
-		height: 80
-		x: 20
-		y: 100 * i
-		backgroundColor: "#FFF"
-		borderRadius: 6
+for i in [0...rows]
+	item_swipe = new ScrollComponent
+		width: forecast_scroll.width
+		height: rowHeight
+		x: 0
+		y: i * (rowHeight + gutter)
+		parent: forecast_scroll.content
+		scrollVertical: false
+	item_swipe.contentInset =
+		right: 250
+	item_swipe.content.draggable.directionLock = true
+	item_swipe.content.draggable.directionLockThreshold =
+		x: 0
+		y: 10
+	cell = new Layer
+		image: item_list[i]
+		width: rowWidth
+		height: rowHeight
+		x: Align.center
+		y: 0
+		parent: item_swipe.content
 
 # Confirming and Cancelling touch events
 confirm_handler = (event, layer) ->
