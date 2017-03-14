@@ -71,6 +71,21 @@ forecast_label = new Layer
 textStyle = { "text-align":"center", "font-size":"53px"}
 forecast_label.style = textStyle
 
+cancel = new Layer
+	image: "images/cancel.png"
+	width: 249
+	height: 91
+	x: calendar.width + (gap * 2)
+	y: Screen.height - 91 - gap
+	opacity: 0
+arrive_tomorrow = new Layer
+	image: "images/arriving_tomorrow.png"
+	width: 675
+	height: 91
+	x: calendar.width + cancel.width + (gap * 2) + (gap / 2)
+	y: Screen.height - 91 - gap
+	opacity: 0
+
 # Loop to create row layers
 for index in [0...rows]
 	item_swipe = new ScrollComponent
@@ -93,3 +108,20 @@ for index in [0...rows]
 		x: gap
 		y: 0
 		parent: item_swipe.content
+
+# Confirming and Cancelling touch events
+confirm_handler = (event, layer) ->
+    confirm.opacity = 0
+    arrive_tomorrow.opacity = 1
+    cancel.opacity = 1
+    cancel.y = Screen.height - 91 - gap # Return to correct position
+    cancel.on(Events.Click, cancel_handler)
+    confirm.off(Events.Click, confirm_handler)
+cancel_handler = (event, layer) ->
+    confirm.opacity = 1
+    arrive_tomorrow.opacity = 0
+    cancel.opacity = 0
+    cancel.y = Screen.height # Move out of way to prevent blocking touches to confirm
+    cancel.off(Events.Click, cancel_handler)
+    confirm.on(Events.Click, confirm_handler)
+confirm.on(Events.Click, confirm_handler)

@@ -43,7 +43,22 @@ confirm = new Layer
 	width: 650
 	height: 97
 	x: Align.center
-	y: Screen.height - tab_bar.height - 97 - (gap / 2)
+	y: Screen.height - tab_bar.height - 97 - (gap * 0.5)
+
+cancel = new Layer
+	image: "images/cancel.png"
+	width: 202
+	height: 97
+	x: gap
+	y: Screen.height - tab_bar.height - 97 - (gap * 0.5)
+	opacity: 0
+arrive_tomorrow = new Layer
+	image: "images/arriving_tomorrow.png"
+	width: 423
+	height: 97
+	x: cancel.width + (gap * 1.5)
+	y: Screen.height - tab_bar.height - 97 - (gap * 0.5)
+	opacity: 0
 
 # Add top and bottom inset
 scroll.contentInset =
@@ -61,3 +76,20 @@ for i in [0...6]
 		y: 100 * i
 		backgroundColor: "#FFF"
 		borderRadius: 6
+
+# Confirming and Cancelling touch events
+confirm_handler = (event, layer) ->
+    confirm.opacity = 0
+    arrive_tomorrow.opacity = 1
+    cancel.opacity = 1
+    cancel.y = Screen.height - tab_bar.height - 97 - (gap * 0.5) # Return to correct position
+    cancel.on(Events.Click, cancel_handler)
+    confirm.off(Events.Click, confirm_handler)
+cancel_handler = (event, layer) ->
+    confirm.opacity = 1
+    arrive_tomorrow.opacity = 0
+    cancel.opacity = 0
+    cancel.y = Screen.height # Move out of way to prevent blocking touches to confirm
+    cancel.off(Events.Click, cancel_handler)
+    confirm.on(Events.Click, confirm_handler)
+confirm.on(Events.Click, confirm_handler)
