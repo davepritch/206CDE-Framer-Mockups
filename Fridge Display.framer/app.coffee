@@ -9,6 +9,7 @@ rows = 8
 gutter = 30
 rowWidth = 849
 rowHeight = 240
+item_list = ["images/items/item_1.png","images/items/item_2.png","images/items/item_3.png","images/items/item_4.png","images/items/item_5.png","images/items/item_6.png","images/items/item_7.png","images/items/item_8.png"]
 
 # Placeholders
 
@@ -96,7 +97,7 @@ for index in [0...rows]
 		x: 0
 		y: 10
 	cell = new Layer
-		image: "images/item_box.png"
+		image: item_list[index]
 		width: rowWidth
 		height: rowHeight
 		x: gap
