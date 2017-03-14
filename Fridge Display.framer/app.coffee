@@ -108,6 +108,21 @@ for index in [0...rows]
 		x: gap
 		y: 0
 		parent: item_swipe.content
+#TODO add animation for swipe and move buttons to the back
+	buttonDelete = new Layer
+		image: "images/trash.png"
+		parent: item_swipe.content
+		x: 795
+		y: 63
+		width: 79
+		height: 115
+	buttonEdit = new Layer
+		image: "images/edit.png"
+		parent: item_swipe.content
+		x: 638
+		y: 47
+		width: 138
+		height: 146
 
 # Confirming and Cancelling touch events
 confirm_handler = (event, layer) ->
