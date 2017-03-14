@@ -1,3 +1,4 @@
+# Set Background
 background = new BackgroundLayer
 	image: "images/background.png"
 
@@ -12,28 +13,24 @@ rowHeight = 240
 item_list = ["images/items/item_1.png","images/items/item_2.png","images/items/item_3.png","images/items/item_4.png","images/items/item_5.png","images/items/item_6.png","images/items/item_7.png","images/items/item_8.png"]
 
 # Placeholders
-
 reminders = new Layer
 	image: "images/reminders.png"
 	x: gap
 	y: gap
 	width: 949
 	height: 1291
-
 calendar = new Layer
 	image: "images/calendar.png"
 	x: gap
 	y: reminders.height + (gap * 2)
 	width: 949
 	height: 1291
-
 clock = new Layer
 	image: "images/clock.png"
 	x: reminders.width + (gap * 2)
 	y: gap
 	width: 949
 	height: 441
-
 weather = new Layer
 	image: "images/weather.png"
 	x: reminders.width + (gap * 2)
@@ -42,33 +39,26 @@ weather = new Layer
 	height: 800
 
 # Shopping Forecast
-
 forecast_box = new Layer
 	image: "images/shopping_forecast_box.png"
 	x: calendar.width + (gap * 2)
 	y: reminders.height + (gap * 2)
 	width: 949
 	height: 1150
-
 confirm = new Layer
 	image: "images/confirm.png"
 	x: calendar.width  + (gap * 1) + (gap * 1)
 	y: clock.height + weather.height + forecast_box.height + (gap * 4)
 	width: forecast_box.width
 	height: 91
-
 forecast_scroll = new ScrollComponent
 	x: calendar.width + (gap * 2)
 	y: clock.height + weather.height + (gap * 3)
 	width: forecast_box.width
 	height: forecast_box.height
 	scrollHorizontal: false
-
 forecast_scroll.contentInset = 
 	bottom: gap
-
-textStyle = { "text-align":"center", "font-size":"53px"}
-
 forecast_label = new Layer
 	html: "Shopping forecast"
 	fontFamily: "HanziPen TC"
@@ -78,7 +68,7 @@ forecast_label = new Layer
 	width: forecast_box.width
 	opacity: 0.75
 	y: 60
-
+textStyle = { "text-align":"center", "font-size":"53px"}
 forecast_label.style = textStyle
 
 # Loop to create row layers
