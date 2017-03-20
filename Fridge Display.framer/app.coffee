@@ -96,11 +96,26 @@ for index in [0...rows]
 		parent: forecast_scroll.content
 		scrollVertical: false
 	item_swipe.contentInset =
-		right: 300
+		right: 100
 	item_swipe.content.draggable.directionLock = true
 	item_swipe.content.draggable.directionLockThreshold =
 		x: 0
 		y: 10
+#TODO add animation for swipe and move buttons to the back
+	buttonDelete = new Layer
+		image: "images/trash.png"
+		parent: item_swipe.content
+		x: 1171
+		y: 63
+		width: 79
+		height: 115
+	buttonEdit = new Layer
+		image: "images/edit.png"
+		parent: item_swipe.content
+		x: 988
+		y: 47
+		width: 138
+		height: 146
 	cell = new Layer
 		image: item_list[index]
 		width: rowWidth
@@ -108,21 +123,6 @@ for index in [0...rows]
 		x: gap
 		y: 0
 		parent: item_swipe.content
-#TODO add animation for swipe and move buttons to the back
-	buttonDelete = new Layer
-		image: "images/trash.png"
-		parent: item_swipe.content
-		x: 795
-		y: 63
-		width: 79
-		height: 115
-	buttonEdit = new Layer
-		image: "images/edit.png"
-		parent: item_swipe.content
-		x: 638
-		y: 47
-		width: 138
-		height: 146
 
 # Confirming and Cancelling touch events
 confirm_handler = (event, layer) ->
