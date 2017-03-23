@@ -124,6 +124,13 @@ for index in [0...rows]
 		y: 0
 		parent: item_swipe.content
 
+messageBox = new Layer
+	x: 1201
+	y: 1752
+	width: 645
+	height: 428
+messageBox.visible = false
+
 # Confirming and Cancelling touch events
 confirm_handler = (event, layer) ->
     confirm.opacity = 0
@@ -132,11 +139,17 @@ confirm_handler = (event, layer) ->
     cancel.y = Screen.height - 91 - gap # Return to correct position
     cancel.on(Events.Click, cancel_handler)
     confirm.off(Events.Click, confirm_handler)
+    messageBox.visible = true
+    forecast_scroll.visible = false
+    forecast_label.parent = forecast_box
 cancel_handler = (event, layer) ->
     confirm.opacity = 1
     arrive_tomorrow.opacity = 0
     cancel.opacity = 0
     cancel.y = Screen.height # Move out of way to prevent blocking touches to confirm
+    messageBox.visible = false
+    forecast_scroll.visible = true
     cancel.off(Events.Click, cancel_handler)
     confirm.on(Events.Click, confirm_handler)
 confirm.on(Events.Click, confirm_handler)
+
