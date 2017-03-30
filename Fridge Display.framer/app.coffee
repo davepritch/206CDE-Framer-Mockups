@@ -129,6 +129,7 @@ messageBox = new Layer
 	y: 1752
 	width: 645
 	height: 428
+	image: "images/message.png"
 messageBox.visible = false
 
 # Confirming and Cancelling touch events
@@ -152,4 +153,31 @@ cancel_handler = (event, layer) ->
     cancel.off(Events.Click, cancel_handler)
     confirm.on(Events.Click, confirm_handler)
 confirm.on(Events.Click, confirm_handler)
+
+clockSep = new Layer
+	x: 1493
+	y: 122
+	height: 293
+	width: 59
+	image: "images/clockSep.png"
+
+animationA = new Animation({
+    layer: clockSep,
+    properties: {opacity: 0},
+    time: 1
+})
+
+animationB = new Animation({
+    layer: clockSep,
+    properties: {opacity: 1},
+    time: 1
+})
+
+animationA.start()
+
+animationA.on Events.AnimationEnd, ->
+    animationB.start()
+
+animationB.on Events.AnimationEnd, ->
+    animationA.start()
 
