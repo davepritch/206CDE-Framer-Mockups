@@ -11,6 +11,8 @@ gutter = 30
 rowWidth = 566
 rowHeight = 201
 item_list = ["images/items/item_1.png","images/items/item_2.png","images/items/item_3.png","images/items/item_4.png","images/items/item_5.png","images/items/item_6.png","images/items/item_7.png","images/items/item_8.png"]
+item_list_reversed = ["images/items/item_8.png","images/items/item_7.png","images/items/item_6.png","images/items/item_5.png","images/items/item_4.png","images/items/item_3.png","images/items/item_2.png","images/items/item_1.png"]
+history_item_list = ["images/history_items/item_7.png","images/history_items/item_6.png","images/history_items/item_5.png","images/history_items/item_2.png","images/history_items/item_1.png","images/history_items/item_4.png","images/history_items/item_3.png","images/history_items/item_8.png"]
 
 # status bar
 status_bar = new Layer
@@ -165,8 +167,51 @@ confirm.on(Events.Click, confirm_handler)
 tab_2_container = new Layer
 	width: Screen.width - gap
 	height: Screen.height - tab_bar.height
-	backgroundColor: "rgba(150,50,50,0.2)"
+	backgroundColor: "rgba(150,50,50,0)"
 tab_container.addPage tab_2_container
+
+# Create Scroll Box
+forecast_scroll = new ScrollComponent
+	width: 650
+	height: 1005
+	x: Align.center
+	y: status_bar.height + gap + 10
+	image: "images/container.png"
+	scrollHorizontal: false
+	borderRadius: 40
+	parent: tab_2_container # Add as child of tab container
+forecast_scroll.contentInset = 
+	top: gap
+	bottom: gap
+
+# Add top and bottom inset
+scroll.contentInset =
+	top: 20
+	bottom: 20
+
+# Add items
+for i in [0...rows]
+	item_swipe = new ScrollComponent
+		width: forecast_scroll.width
+		height: rowHeight
+		x: 0
+		y: i * (rowHeight + gutter)
+		parent: forecast_scroll.content
+		scrollVertical: false
+	item_swipe.contentInset =
+		right: 250
+	item_swipe.content.draggable.directionLock = true
+	item_swipe.content.draggable.directionLockThreshold =
+		x: 0
+		y: 10
+	cell = new Layer
+		# different item order to give impression of different items
+		image: item_list_reversed[i]
+		width: rowWidth
+		height: rowHeight
+		x: Align.center
+		y: 0
+		parent: item_swipe.content
 
 # ********************************************************
 # TAB 3
@@ -175,8 +220,51 @@ tab_container.addPage tab_2_container
 tab_3_container = new Layer
 	width: Screen.width - gap
 	height: Screen.height - tab_bar.height
-	backgroundColor: "rgba(50,250,50,0.2)"
+	backgroundColor: "rgba(50,250,50,0)"
 tab_container.addPage tab_3_container
+
+# Create Scroll Box
+forecast_scroll = new ScrollComponent
+	width: 650
+	height: 1005
+	x: Align.center
+	y: status_bar.height + gap + 10
+	image: "images/container.png"
+	scrollHorizontal: false
+	borderRadius: 40
+	parent: tab_3_container # Add as child of tab container
+forecast_scroll.contentInset = 
+	top: gap
+	bottom: gap
+
+# Add top and bottom inset
+scroll.contentInset =
+	top: 20
+	bottom: 20
+
+# Add items
+for i in [0...rows]
+	item_swipe = new ScrollComponent
+		width: forecast_scroll.width
+		height: rowHeight
+		x: 0
+		y: i * (rowHeight + gutter)
+		parent: forecast_scroll.content
+		scrollVertical: false
+	item_swipe.contentInset =
+		right: 250
+	item_swipe.content.draggable.directionLock = true
+	item_swipe.content.draggable.directionLockThreshold =
+		x: 0
+		y: 10
+	cell = new Layer
+		# different item order to give impression of different items
+		image: history_item_list[i]
+		width: rowWidth
+		height: rowHeight
+		x: Align.center
+		y: 0
+		parent: item_swipe.content
 
 # ********************************************************
 # TAB 4
@@ -185,8 +273,22 @@ tab_container.addPage tab_3_container
 tab_4_container = new Layer
 	width: Screen.width - gap
 	height: Screen.height - tab_bar.height
-	backgroundColor: "rgba(250,0,100,0.3)"
+	backgroundColor: "rgba(250,0,100,0)"
 tab_container.addPage tab_4_container
+
+# Create Scroll Box
+forecast_scroll = new Layer
+	width: 650
+	height: 1005
+	x: Align.center
+	y: status_bar.height + gap + 10
+	image: "images/container.png"
+	scrollHorizontal: false
+	borderRadius: 40
+	parent: tab_4_container # Add as child of tab container
+forecast_scroll.contentInset = 
+	top: gap
+	bottom: gap
 
 # ********************************************************
 # Tab bar touch events
