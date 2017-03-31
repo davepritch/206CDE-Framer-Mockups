@@ -47,6 +47,13 @@ messageBox = new Layer
 	image: "images/messageBox.png"
 messageBox.visible = false
 
+clockSep = new Layer
+	x: 1493
+	y: 136
+	height: 293
+	width: 59
+	image: "images/clockSep.png"
+
 ######### Sticky Note #########
 addNewSticky = new Layer
 	image: "images/addButton.png"
@@ -61,14 +68,6 @@ DeleteSticky = new Layer
 	height: 96
 	y: 1410
 	x: 757
-	visible: false
-
-StickyNote = new Layer
-	width: 717
-	image: "images/StickyNote.png"
-	height: 710
-	x: 166
-	y: 1696
 	visible: false
 
 addNewSticky.onClick (event, layer) ->
@@ -196,6 +195,8 @@ addNew.onClick (event, layer) ->
 	messageBoxAddNewCancel.visible = true
 	animationaddNewBoxIn.start()
 	animationKeyboardIn.start()
+	addNewBox.bringToFront()
+	messageBoxAddNewCancel.bringToFront()
 
 ######## Shopping Forecast ########
 forecast_box = new Layer
@@ -303,6 +304,16 @@ cancel_handler = (event, layer) ->
     confirm.on(Events.Click, confirm_handler)
 confirm.on(Events.Click, confirm_handler)
 
+#########  StickyNote feature addition #########
+StickyNote = new Layer
+	width: 717
+	image: "images/StickyNote.png"
+	height: 710
+	x: 166
+	y: 1696
+	visible: false
+#########  StickyNote feature addition#########
+
 #########  Update feature #########
 keyBoardLayer = new Layer
 	x: 19
@@ -384,13 +395,6 @@ animationKeyboardIn = new Animation({
 })
 
 ######### Clock animations #########
-clockSep = new Layer
-	x: 1493
-	y: 136
-	height: 293
-	width: 59
-	image: "images/clockSep.png"
-
 animationA = new Animation({
     layer: clockSep,
     properties: {opacity: 0},
@@ -411,5 +415,5 @@ animationA.on Events.AnimationEnd, ->
 
 animationB.on Events.AnimationEnd, ->
     animationA.start()
-    
+
 ############# END #############
