@@ -47,6 +47,42 @@ messageBox = new Layer
 	image: "images/messageBox.png"
 messageBox.visible = false
 
+######### Sticky Note #########
+addNewSticky = new Layer
+	image: "images/addButton.png"
+	width: 96
+	height: 96
+	y: 1410
+	x: 879
+
+DeleteSticky = new Layer
+	image: "images/buttonDelete.png"
+	width: 96
+	height: 96
+	y: 1410
+	x: 757
+	visible: false
+
+StickyNote = new Layer
+	width: 717
+	image: "images/StickyNote.png"
+	height: 710
+	x: 166
+	y: 1696
+	visible: false
+
+addNewSticky.onClick (event, layer) ->
+	StickyNote.visible = true
+	StickyNote.draggable.enabled = true
+	DeleteSticky.visible = true
+	StickyNote.x = 166
+	StickyNote.y = 1696
+
+DeleteSticky.onClick (event, layer) ->
+	StickyNote.visible = false
+	StickyNote.draggable.enabled = false
+	DeleteSticky.visible = false
+
 ########## Reminders #########
 reminders_scroll = new ScrollComponent
 	scrollHorizontal: false
@@ -375,40 +411,5 @@ animationA.on Events.AnimationEnd, ->
 
 animationB.on Events.AnimationEnd, ->
     animationA.start()
-
-######### Sticky Note #########
-addNewSticky = new Layer
-	image: "images/addButton.png"
-	width: 96
-	height: 96
-	y: 1410
-	x: 879
-
-DeleteSticky = new Layer
-	image: "images/buttonDelete.png"
-	width: 96
-	height: 96
-	y: 1410
-	x: 757
-	visible: false
-
-StickyNote = new Layer
-	width: 717
-	image: "images/StickyNote.png"
-	height: 710
-	x: 166
-	y: 1696
-	visible: false
-
-addNewSticky.onClick (event, layer) ->
-	StickyNote.visible = true
-	StickyNote.draggable.enabled = true
-	DeleteSticky.visible = true
-	StickyNote.x = 166
-	StickyNote.y = 1696
-
-DeleteSticky.onClick (event, layer) ->
-	StickyNote.visible = false
-	StickyNote.draggable.enabled = false
-	DeleteSticky.visible = false
+    
 ############# END #############
