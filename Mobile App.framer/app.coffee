@@ -171,7 +171,7 @@ tab_2_container = new Layer
 tab_container.addPage tab_2_container
 
 # Create Scroll Box
-forecast_scroll = new ScrollComponent
+inventory_scroll = new ScrollComponent
 	width: 650
 	height: 1005
 	x: Align.center
@@ -180,7 +180,7 @@ forecast_scroll = new ScrollComponent
 	scrollHorizontal: false
 	borderRadius: 40
 	parent: tab_2_container # Add as child of tab container
-forecast_scroll.contentInset = 
+inventory_scroll.contentInset = 
 	top: gap
 	bottom: gap
 
@@ -192,11 +192,11 @@ scroll.contentInset =
 # Add items
 for i in [0...rows]
 	item_swipe = new ScrollComponent
-		width: forecast_scroll.width
+		width: inventory_scroll.width
 		height: rowHeight
 		x: 0
 		y: i * (rowHeight + gutter)
-		parent: forecast_scroll.content
+		parent: inventory_scroll.content
 		scrollVertical: false
 	item_swipe.contentInset =
 		right: 250
@@ -224,7 +224,7 @@ tab_3_container = new Layer
 tab_container.addPage tab_3_container
 
 # Create Scroll Box
-forecast_scroll = new ScrollComponent
+history_scroll = new ScrollComponent
 	width: 650
 	height: 1005
 	x: Align.center
@@ -233,7 +233,7 @@ forecast_scroll = new ScrollComponent
 	scrollHorizontal: false
 	borderRadius: 40
 	parent: tab_3_container # Add as child of tab container
-forecast_scroll.contentInset = 
+history_scroll.contentInset = 
 	top: gap
 	bottom: gap
 
@@ -245,11 +245,11 @@ scroll.contentInset =
 # Add items
 for i in [0...rows]
 	item_swipe = new ScrollComponent
-		width: forecast_scroll.width
+		width: history_scroll.width
 		height: rowHeight
 		x: 0
 		y: i * (rowHeight + gutter)
-		parent: forecast_scroll.content
+		parent: history_scroll.content
 		scrollVertical: false
 	item_swipe.contentInset =
 		right: 250
@@ -277,7 +277,7 @@ tab_4_container = new Layer
 tab_container.addPage tab_4_container
 
 # Create Scroll Box
-forecast_scroll = new Layer
+settings_box = new Layer
 	width: 650
 	height: 1005
 	x: Align.center
@@ -286,9 +286,59 @@ forecast_scroll = new Layer
 	scrollHorizontal: false
 	borderRadius: 40
 	parent: tab_4_container # Add as child of tab container
-forecast_scroll.contentInset = 
+settings_box.contentInset = 
 	top: gap
 	bottom: gap
+
+# Add items
+setting_1 = new Layer
+	image: "images/settings/item_1_on.png"
+	width: 566
+	height: 109
+	x: (settings_box.width - 566)/2
+	y: gap
+	parent: settings_box # Add as child of tab container
+
+setting_2 = new Layer
+	image: "images/settings/item_2_off.png"
+	width: 566
+	height: 109
+	x: (settings_box.width - 566)/2
+	y: gap + setting_1.height + gutter
+	parent: settings_box # Add as child of tab container
+
+setting_3 = new Layer
+	image: "images/settings/item_3_on.png"
+	width: 566
+	height: 109
+	x: (settings_box.width - 566)/2
+	y: gap + setting_1.height * 2 + gutter * 2
+	parent: settings_box # Add as child of tab container
+
+setting_4 = new Layer
+	image: "images/settings/item_4_state_2.png"
+	width: 566
+	height: 188
+	x: (settings_box.width - 566)/2
+	y: gap + setting_1.height * 3 + gutter * 3
+	parent: settings_box # Add as child of tab container
+
+# Toggle settings
+setting_1.onTap ->
+	if setting_1.image == "images/settings/item_1_on.png"
+		setting_1.image = "images/settings/item_1_off.png"
+	else if setting_1.image == "images/settings/item_1_off.png"
+		setting_1.image = "images/settings/item_1_on.png"
+setting_3.onTap ->
+	if setting_3.image == "images/settings/item_3_on.png"
+		setting_3.image = "images/settings/item_3_off.png"
+	else if setting_3.image == "images/settings/item_3_off.png"
+		setting_3.image = "images/settings/item_3_on.png"
+setting_4.onTap ->
+	if setting_4.image == "images/settings/item_4_state_1.png"
+		setting_4.image = "images/settings/item_4_state_2.png"
+	else if setting_4.image == "images/settings/item_4_state_2.png"
+		setting_4.image = "images/settings/item_4_state_1.png"
 
 # ********************************************************
 # Tab bar touch events
