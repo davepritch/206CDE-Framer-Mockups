@@ -33,7 +33,7 @@ clock = new Layer
 	width: 949
 	height: 441
 weather = new Layer
-	image: "images/weather.png"
+	image: "images/weatherTest.png"
 	x: reminders.width + (gap * 2)
 	y: clock.height + (gap * 2)
 	width: 949
@@ -232,24 +232,24 @@ keyBoardLayer = new Layer
 	backgroundColor: "grey"
 
 updateBox = new Layer
-	x: 431
-	y: 695
-	width: 1237
-	height: 871
+	x: 561
+	y: 882
+	width: 955
+	height: 576
 	image: "images/updateBox.png"
 
 messageBoxCancel = new Layer
-	x: 425
-	y: 695
-	height: 75
-	width: 123
+	x: 639
+	y: 1343
+	height: 120
+	width: 399
 	opacity: 0
 
 messageBoxDone = new Layer
-	x: 1576
-	y: 695
-	height: 75
-	width: 98
+	x: 1080
+	y: 1341
+	height: 138
+	width: 385
 	opacity: 0
 
 updateBox.visible = false
@@ -267,14 +267,14 @@ animationUpdateBoxOut = new Animation({
     layer: updateBox,
     properties: {opacity: 0},
     curve: "ease-out"
-    time: 0.3
+    time: 0.12
 })
 
 animationUpdateBoxIn = new Animation({
     layer: updateBox,
     properties: {opacity: 1},
     curve: "ease-in"
-    time: 0.3
+    time: 0.12
 })
 
 
@@ -294,7 +294,7 @@ animationKeyboardIn = new Animation({
     y: 1781,
     opacity: 1},
     curve: "ease-in"
-    time: 0.15
+    time: 0.12
 })
 
 ######### Clock animations #########
@@ -308,7 +308,8 @@ clockSep = new Layer
 animationA = new Animation({
     layer: clockSep,
     properties: {opacity: 0},
-    time: 1
+    time: 1.1
+    delay: 0.5
 })
 
 animationB = new Animation({
