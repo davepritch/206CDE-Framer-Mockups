@@ -70,13 +70,6 @@ DeleteSticky = new Layer
 	x: 757
 	visible: false
 
-addNewSticky.onClick (event, layer) ->
-	StickyNote.visible = true
-	StickyNote.draggable.enabled = true
-	DeleteSticky.visible = true
-	StickyNote.x = 166
-	StickyNote.y = 1696
-
 DeleteSticky.onClick (event, layer) ->
 	StickyNote.visible = false
 	StickyNote.draggable.enabled = false
@@ -312,7 +305,50 @@ StickyNote = new Layer
 	x: 166
 	y: 1696
 	visible: false
-#########  StickyNote feature addition#########
+
+addNewStickyMessageBox = new Layer
+	x: 561
+	y: 882
+	width: 955
+	height: 576
+	image: "images/addStickyMessageBox.png"
+	visible: false
+
+addNewStickyMessageBoxCancel = new Layer
+	x: 590
+	y: 1324
+	height: 127
+	width: 385
+	visible: false
+	opacity: 0
+
+addNewStickyMessageBoxOK = new Layer
+	x: 999
+	y: 1324
+	height: 127
+	width: 385
+	visible: false
+	opacity: 0
+
+addNewStickyMessageBoxOK.onClick (event, layer) ->
+	StickyNote.visible = true
+	StickyNote.draggable.enabled = true
+	DeleteSticky.visible = true
+	StickyNote.x = 166
+	StickyNote.y = 1696
+	addNewStickyMessageBox.visible = false
+	addNewStickyMessageBoxOK.visible = false
+	addNewStickyMessageBoxCancel.visible = false
+
+addNewStickyMessageBoxCancel.onClick (event, layer) ->
+	addNewStickyMessageBox.visible = false
+
+addNewSticky.onClick (event, layer) ->
+	addNewStickyMessageBox.visible = true
+	addNewStickyMessageBoxOK.visible = true
+	addNewStickyMessageBoxCancel.visible = true
+	addNewStickyMessageBoxOK.bringToFront()
+	addNewStickyMessageBoxCancel.bringToFront()
 
 #########  Update feature #########
 keyBoardLayer = new Layer
