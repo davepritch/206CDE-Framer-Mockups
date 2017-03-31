@@ -12,6 +12,7 @@ gutter = 30
 rowWidth = 849
 rowHeight = 240
 item_list = ["images/items/item_1.png","images/items/item_2.png","images/items/item_3.png","images/items/item_4.png","images/items/item_5.png","images/items/item_6.png","images/items/item_7.png","images/items/item_8.png"]
+reminders_list = ["images/reminders/item_1.png","images/reminders/item_2.png"]
 
 ######### Main Placeholders #########
 reminders = new Layer
@@ -132,7 +133,7 @@ for index in [0...2]
 		width: 138
 		height: 146
 	cell = new Layer
-		image: item_list[index]
+		image: reminders_list[index]
 		width: rowWidth
 		height: rowHeight
 		x: gap
