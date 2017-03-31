@@ -151,7 +151,7 @@ addNewBox = new Layer
 	y: 882
 	width: 955
 	height: 576
-	image: "images/updateBox.png"
+	image: "images/addReminder.png"
 
 addNewBox.visible = false
 
@@ -331,6 +331,8 @@ addNewStickyMessageBoxOK = new Layer
 	opacity: 0
 
 addNewStickyMessageBoxOK.onClick (event, layer) ->
+	keyBoardLayer.visible = false
+	animationKeyboardOut.start()
 	StickyNote.visible = true
 	StickyNote.draggable.enabled = true
 	DeleteSticky.visible = true
@@ -342,8 +344,14 @@ addNewStickyMessageBoxOK.onClick (event, layer) ->
 
 addNewStickyMessageBoxCancel.onClick (event, layer) ->
 	addNewStickyMessageBox.visible = false
+	addNewStickyMessageBoxOK.visible = false
+	addNewStickyMessageBoxCancel.visible = false
+	keyBoardLayer.visible = false
+	animationKeyboardOut.start()
 
 addNewSticky.onClick (event, layer) ->
+	keyBoardLayer.visible = true
+	animationKeyboardIn.start()
 	addNewStickyMessageBox.visible = true
 	addNewStickyMessageBoxOK.visible = true
 	addNewStickyMessageBoxCancel.visible = true
