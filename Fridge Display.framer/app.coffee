@@ -44,7 +44,7 @@ messageBox = new Layer
 	y: 1752
 	width: 645
 	height: 428
-	image: "images/message.png"
+	image: "images/messageBox.png"
 messageBox.visible = false
 
 ########## Reminders #########
@@ -69,13 +69,13 @@ textStyle = { "text-align":"center", "font-size":"53px"}
 reminders_label.style = textStyle
 
 addNew = new Layer
-	image: "images/confirm.png"
+	image: "images/buttonAddNew.png"
 	width: 900
 	height: 91
 	y: 1218
 	x: 75
 
-for index in [0...rows]
+for index in [0...2]
 	item_swipe = new ScrollComponent
 		width: reminders_scroll.width
 		height: rowHeight
@@ -115,6 +115,51 @@ for index in [0...rows]
 		keyBoardLayer.visible = true
 		animationUpdateBoxIn.start()
 		animationKeyboardIn.start()
+		messageBoxDone.visible = true
+		messageBoxCancel.visible = true
+
+addNewBox = new Layer
+	x: 561
+	y: 882
+	width: 955
+	height: 576
+	image: "images/updateBox.png"
+
+addNewBox.visible = false
+
+animationaddNewBoxOut = new Animation({
+    layer: addNewBox,
+    properties: {opacity: 0},
+    curve: "ease-out"
+    time: 0.1
+})
+
+animationaddNewBoxIn = new Animation({
+    layer: addNewBox,
+    properties: {opacity: 1},
+    curve: "ease-in"
+    time: 0.1
+})
+
+messageBoxAddNewCancel = new Layer
+	x: 639
+	y: 1343
+	height: 115
+	width: 805
+	opacity: 0
+	visible: false
+
+messageBoxAddNewCancel.onClick (event, layer) ->
+	animationaddNewBoxOut.start()
+	animationKeyboardOut.start()
+	messageBoxAddNewCancel.visible = false
+
+addNew.onClick (event, layer) ->
+	keyBoardLayer.visible = true
+	addNewBox.visible = true
+	messageBoxAddNewCancel.visible = true
+	animationaddNewBoxIn.start()
+	animationKeyboardIn.start()
 
 ######## Shopping Forecast ########
 forecast_box = new Layer
@@ -244,13 +289,15 @@ messageBoxCancel = new Layer
 	height: 120
 	width: 399
 	opacity: 0
+	visible: false
 
 messageBoxDone = new Layer
-	x: 1080
+	x: 1049
 	y: 1341
-	height: 138
+	height: 117
 	width: 385
 	opacity: 0
+	visible: false
 
 updateBox.visible = false
 keyBoardLayer.visible = false
@@ -258,25 +305,28 @@ keyBoardLayer.visible = false
 messageBoxCancel.onClick (event, layer) ->
 	animationUpdateBoxOut.start()
 	animationKeyboardOut.start()
+	messageBoxDone.visible = false
+	messageBoxCancel.visible = false
 
 messageBoxDone.onClick (event, layer) ->
 	animationUpdateBoxOut.start()
 	animationKeyboardOut.start()
+	messageBoxDone.visible = false
+	messageBoxCancel.visible = false
 
 animationUpdateBoxOut = new Animation({
     layer: updateBox,
     properties: {opacity: 0},
     curve: "ease-out"
-    time: 0.12
+    time: 0.1
 })
 
 animationUpdateBoxIn = new Animation({
     layer: updateBox,
     properties: {opacity: 1},
     curve: "ease-in"
-    time: 0.12
+    time: 0.1
 })
-
 
 animationKeyboardOut = new Animation({
     layer: keyBoardLayer,
