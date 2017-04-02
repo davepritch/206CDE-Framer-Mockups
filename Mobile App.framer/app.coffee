@@ -130,16 +130,30 @@ for i in [0...rows]
 		parent: forecast_scroll.content
 		scrollVertical: false
 	item_swipe.contentInset =
-		right: 250
+		right: 70
 	item_swipe.content.draggable.directionLock = true
 	item_swipe.content.draggable.directionLockThreshold =
 		x: 0
 		y: 10
+	buttonDelete = new Layer
+		image: "images/trash.png"
+		parent: item_swipe.content
+		x: 790
+		y: 70
+		width: 46
+		height: 62
+	buttonEdit = new Layer
+		image: "images/edit.png"
+		parent: item_swipe.content
+		x: 670
+		y: 70
+		width: 57
+		height: 62
 	cell = new Layer
 		image: item_list[i]
 		width: rowWidth
 		height: rowHeight
-		x: Align.center
+		x: gap - 9
 		y: 0
 		parent: item_swipe.content
 
