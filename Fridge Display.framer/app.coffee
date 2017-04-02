@@ -332,7 +332,6 @@ addNewStickyMessageBoxOK = new Layer
 	opacity: 0
 
 addNewStickyMessageBoxOK.onClick (event, layer) ->
-	keyBoardLayer.visible = false
 	animationKeyboardOut.start()
 	StickyNote.visible = true
 	StickyNote.draggable.enabled = true
@@ -344,11 +343,10 @@ addNewStickyMessageBoxOK.onClick (event, layer) ->
 	addNewStickyMessageBoxCancel.visible = false
 
 addNewStickyMessageBoxCancel.onClick (event, layer) ->
+	animationKeyboardOut.start()
 	addNewStickyMessageBox.visible = false
 	addNewStickyMessageBoxOK.visible = false
 	addNewStickyMessageBoxCancel.visible = false
-	keyBoardLayer.visible = false
-	animationKeyboardOut.start()
 
 addNewSticky.onClick (event, layer) ->
 	keyBoardLayer.visible = true
