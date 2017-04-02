@@ -22,7 +22,7 @@ reminders = new Layer
 	width: 949
 	height: 1291
 calendar = new Layer
-	image: "images/calendar.png"
+	image: "images/calendarTest.png"
 	x: gap
 	y: reminders.height + (gap * 2)
 	width: 949
