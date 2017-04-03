@@ -2,6 +2,9 @@
 background = new BackgroundLayer
 	image: "images/background.png"
 
+# Remove annoying hinsts when mirroring
+Framer.Extras.Hints.disable()
+
 # Variables
 gap = 50
 
